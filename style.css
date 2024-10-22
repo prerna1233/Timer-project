@@ -1,31 +1,28 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins' , sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-.hero{
+.hero {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(45deg , #08001f , #30197d);
+    background: linear-gradient(45deg, #08001f, #30197d);
     color: white;
     position: relative;
 }
 
-.container{
-    width: 800px;
-    height: 180px;
+.container {
+    width: 800px; /* Fixed width for larger screens */
+    height: 180px; /* Fixed height */
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    /* background: red; */
+    transform: translate(-50%, -50%);
 }
 
-
-
-.clock{
+.clock {
     width: 100%;
     height: 100%;
     background: rgba(235, 0, 255, 0.11);
@@ -36,9 +33,9 @@
     backdrop-filter: blur(40px);
 }
 
-.container::before{
+.container::before {
     content: '';
-    width: 180px;
+    width: 180px; /* Fixed size */
     height: 180px;
     background: #f41b75;
     border-radius: 5px;
@@ -48,9 +45,9 @@
     z-index: -1;
 }
 
-.container::after{
+.container::after {
     content: '';
-    width: 180px;
+    width: 180px; /* Fixed size */
     height: 180px;
     background: #419aff;
     border-radius: 50%;
@@ -60,34 +57,32 @@
     z-index: -1;
 }
 
-.clock span{
-    font-size: 80px;
+.clock span {
+    font-size: 80px; /* Fixed font size */
     width: 110px;
     display: inline-block;
     text-align: center;
     position: relative;
-
-
 }
 
-.clock span::after{
-    font-size: 16px;
+.clock span::after {
+    font-size: 16px; /* Fixed font size */
     position: absolute;
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
 }
-#hrs::after{
-    content: 'HOURS';
 
+#hrs::after {
+    content: 'HOURS';
 }
-#min::after{
+
+#min::after {
     content: 'MINS';
-    
 }
-#sec::after{
+
+#sec::after {
     content: 'SEC';
-    
 }
 
 .buttons {
@@ -111,3 +106,46 @@ button {
 button:hover {
     background-color: #419aff;
 }
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .container {
+        width: 90%; /* Make container width responsive */
+        height: auto; /* Adjust height for flexibility */
+    }
+}
+
+@media (max-width: 600px) {
+    .clock span {
+        font-size: 60px; /* Adjust font size for smaller screens */
+    }
+
+    button {
+        font-size: 18px; /* Slightly smaller button text */
+        padding: 8px 16px; /* Adjust button padding */
+    }
+
+    .container::before,
+    .container::after {
+        width: 150px; /* Adjust size of decorative elements */
+        height: 150px; /* Adjust size of decorative elements */
+    }
+}
+
+@media (max-width: 480px) {
+    .clock span {
+        font-size: 50px; /* Even smaller font size for mobile devices */
+    }
+
+    button {
+        font-size: 16px; /* Adjust button text size */
+        padding: 6px 12px; /* Further reduce button padding */
+    }
+
+    .container::before,
+    .container::after {
+        width: 120px; /* Further adjust size of decorative elements */
+        height: 120px; /* Further adjust size of decorative elements */
+    }
+}
+
