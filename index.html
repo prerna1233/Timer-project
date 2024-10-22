@@ -1,0 +1,124 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <span id="hoursElem">00</span>
+                <span> : </span>
+                <span id="minutesElem">00</span>
+                <span> : </span>
+                <span id="secondsElem">00</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let hoursDisplay = document.getElementById('hoursElem');  
+        let minutesDisplay = document.getElementById('minutesElem'); 
+        let secondsDisplay = document.getElementById('secondsElem'); 
+
+        let totalSeconds = 0;
+
+        function updateTimer() {
+            let hours = Math.floor(totalSeconds / 3600);
+            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let seconds = totalSeconds % 60;
+
+            if (hours < 10) {
+                hours = '0' + hours;
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            hoursDisplay.innerHTML = hours;
+            minutesDisplay.innerHTML = minutes;
+            secondsDisplay.innerHTML = seconds;
+
+            totalSeconds++; 
+        }
+
+        setInterval(updateTimer, 1000); 
+    </script>     
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <span id="hoursElem">00</span>
+                <span> : </span>
+                <span id="minutesElem">00</span>
+                <span> : </span>
+                <span id="secondsElem">00</span>
+            </div>
+            <div class="buttons">
+                <button id="startButton">Start</button>
+                <button id="stopButton">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let hoursDisplay = document.getElementById('hoursElem');  
+        let minutesDisplay = document.getElementById('minutesElem'); 
+        let secondsDisplay = document.getElementById('secondsElem'); 
+
+        let totalSeconds = 0;
+        let timerInterval; // Store the timer interval ID
+
+        function updateTimer() {
+            let hours = Math.floor(totalSeconds / 3600);
+            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let seconds = totalSeconds % 60;
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            hoursDisplay.innerHTML = hours;
+            minutesDisplay.innerHTML = minutes;
+            secondsDisplay.innerHTML = seconds;
+
+            totalSeconds++; 
+        }
+
+        function startTimer() {
+            if (!timerInterval) { // Prevent multiple intervals
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null; // Reset the interval ID
+        }
+
+        document.getElementById('startButton').addEventListener('click', startTimer);
+        document.getElementById('stopButton').addEventListener('click', stopTimer);
+    </script>     
+</body>
+</html>
